@@ -2,22 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2666aa16-68ee-4f27-8cdd-b1902457cd2f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Rakefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/icwot.gemspec" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/icwot.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/icwot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/icwot/version.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/icwot.rb" afterPath="$PROJECT_DIR$/lib/icwot.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/icwot" afterPath="$PROJECT_DIR$/bin/icwot" />
     </list>
     <ignored path="icwot.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="2666aa16-68ee-4f27-8cdd-b1902457cd2f" time="1386168157649" ignored="false" />
     <file path="/.gitignore" changelist="2666aa16-68ee-4f27-8cdd-b1902457cd2f" time="1386168172724" ignored="false" />
     <file path="/icwot.gemspec" changelist="2666aa16-68ee-4f27-8cdd-b1902457cd2f" time="1386170625172" ignored="false" />
-    <file path="/icwot.rb" changelist="2666aa16-68ee-4f27-8cdd-b1902457cd2f" time="1386169993125" ignored="false" />
+    <file path="/icwot.rb" changelist="2666aa16-68ee-4f27-8cdd-b1902457cd2f" time="1386172019105" ignored="false" />
+    <file path="/icwot" changelist="2666aa16-68ee-4f27-8cdd-b1902457cd2f" time="1386171516922" ignored="false" />
+    <file path="/README.md" changelist="2666aa16-68ee-4f27-8cdd-b1902457cd2f" time="1386172369108" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,20 +54,38 @@
       <file leaf-file-name="icwot.gemspec" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/icwot.gemspec">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="109" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0">
+            <state line="10" column="133" selection-start="357" selection-end="456" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="icwot.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="icwot" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/icwot">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="1" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="icwot.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/icwot.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+            <state line="20" column="27" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#512#982#1" expanded="true" />
-                <element signature="e#1068#1301#0" expanded="true" />
+                <element signature="e#580#1050#1" expanded="true" />
+                <element signature="e#1136#1370#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="51" selection-start="427" selection-end="427" vertical-scroll-proportion="0.47460595">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -96,9 +110,11 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/lib/icwot.rb" />
         <option value="$PROJECT_DIR$/bin/icwot.rb" />
         <option value="$PROJECT_DIR$/icwot.gemspec" />
+        <option value="$PROJECT_DIR$/bin/icwot" />
+        <option value="$PROJECT_DIR$/lib/icwot.rb" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -448,13 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/icwot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="31" selection-start="88" selection-end="101" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="13" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
@@ -462,20 +471,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/icwot.gemspec">
+    <entry file="file://$PROJECT_DIR$/bin/icwot">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="109" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0">
+        <state line="3" column="1" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/icwot.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+        <state line="20" column="27" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#512#982#1" expanded="true" />
-            <element signature="e#1068#1301#0" expanded="true" />
+            <element signature="e#580#1050#1" expanded="true" />
+            <element signature="e#1136#1370#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icwot.gemspec">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="133" selection-start="357" selection-end="456" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="51" selection-start="427" selection-end="427" vertical-scroll-proportion="0.47460595">
+          <folding />
         </state>
       </provider>
     </entry>

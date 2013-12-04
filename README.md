@@ -1,6 +1,6 @@
 # Icwot
 
-TODO: Write a gem description
+RESTfull [sinatra](http://www.sinatrarb.com) server providing inversion of control for logging messages from another RESTfull application web-server
 
 ## Installation
 
@@ -10,7 +10,7 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
@@ -18,7 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In a terminal run:
+
+    $ icwot
+
+It will start a [sinatra](http://www.sinatrarb.com) server on port 4567. Logging messages will be saved to : your-home-directory/log/icwot-msg.log
 
 ## Contributing
 
