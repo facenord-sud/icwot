@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+# A simple tool to run server on the client side
+`bundle exec ruby client_server.rb -e production`
