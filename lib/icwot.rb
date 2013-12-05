@@ -11,7 +11,7 @@ end
 # POST sur / avec le port 4567
 post '/' do
   content_type 'text/plain'
-  # On enregistre dans un log spécial le body envoyé
+  # On enregistre dans un log spécial le body de la requête
   msg.info request.body.read
   logger.info "message saved to #{self.class.logger_log_file.path}"
   # On retourne le code http 200 avec le texte 'ok'
@@ -42,10 +42,10 @@ private
 
 # Si le fichier log/msg.log n'existe pas, on le créé, sinon on l'ouvre
 def create_or_open_log
-  file_name = "icwot-msg.log"
+  file_name = "icwot-#{ENV['sinatra_port']}-msg.log"
   directory_path = "#{Dir.home}/log/"
   Dir.mkdir(directory_path) unless File.exists?(directory_path)
-  file = File.new(directory_path+file_name, 'a+')
+  file = ((log_path = ENV['sinatra_log']) == '' && !File.exist?(log_path) ? File.new(directory_path+file_name, 'a+') : File.new(ENV['sinatra_log']))
   file.sync = true
   file
 end

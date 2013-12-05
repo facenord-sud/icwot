@@ -1,4 +1,128 @@
 #!/usr/bin/env ruby
 
 # A simple tool to run server on the client side
-`bundle exec ruby lib/icwot.rb -e production`
+
+require 'socket'
+require 'timeout'
+require 'rest-client'
+require 'json'
+
+# determine if a port is used or not
+# from http://stackoverflow.com/questions/517219/ruby-see-if-a-port-is-open
+def self.is_port_open?(ip, port)
+  begin
+    Timeout::timeout(1) do
+      begin
+        s = TCPSocket.new(ip, port)
+        s.close
+        return true
+      rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
+        return false
+      end
+    end
+  rescue Timeout::Error
+  end
+  return false
+end
+
+class Client
+  attr_accessor :uri, :content_type
+
+  def initialize
+    @content_type = 'application/json'
+  end
+
+  def to_xml
+    "<client xmlns=\"http://jaxb.xwot.first.ch.unifr.diuf\"><uri>#{uri}</uri></client>"
+  end
+
+  def to_hash
+    {uri: uri}
+  end
+
+  def get_ip
+    ip=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
+    ip.ip_address if ip
+  end
+
+  def to_s
+    case content_type
+      when 'application/json'
+        to_hash.to_json
+      when 'application/xml'
+        to_xml
+    end
+  end
+end
+
+if ARGV.empty?
+  puts 'you need to provide at least one argument! See icwot -h'
+  exit 0
+end
+produces = 'application/json'
+accept = 'application/json'
+port = 4567
+host = ''
+protocol = 'http://'
+log_path = ''
+ARGV.each_with_index do |a, index|
+  case a
+    when '-h'
+      puts 'Usage : icwot <host>
+            -h print help
+            -l the host is localhost
+            -c the content-type value for the header application/json by default
+            -a the accept value for the header  text/plain by default
+            -p the port where to run the server
+            -t the protocol to use http:// by default
+            -l where to save the log by default your-home-directory/log/icwot-{port}-msg.log
+            host is where to register for the service.
+            '
+      exit 0
+    when '-l'
+      host='localhost'
+    when '-c'
+      produces = ARGV.delete_at index + 1
+    when '-a'
+      accept = ARGV.delete_at index + 1
+    when '-p'
+      port = ARGV.delete_at(index + 1).to_i
+    when '-t'
+      unless (temp = ARGV.delete_at(index + 1)).nil?
+        protocol = temp
+      end
+    when '-l'
+      log_path = ARGV.delete_at index + 1
+    else
+      host += a
+  end
+end
+
+if host == ''
+  puts 'Host must be set !'
+  exit 0
+end
+
+if port == 0
+  puts 'The port must be bigger than 0'
+  exit 0
+end
+
+if is_port_open?('localhost', port)
+  puts 'Port already in use ! Try another one.'
+  exit 0
+end
+
+client = Client.new
+client.uri = "http://#{client.get_ip.to_s}:#{port}/"
+client.content_type = produces
+
+
+response = RestClient.post protocol+host, client.to_s, accept: accept, content_type: produces
+
+unless response.code == 200
+  puts 'Error. Connection not establish with the server.'
+  exit 0
+end
+
+`sinatra_port=#{port} sinatra_log=#{log_path} bundle exec ruby lib/icwot.rb -e production -p #{port}`
