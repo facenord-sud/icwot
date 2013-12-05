@@ -75,7 +75,7 @@ ARGV.each_with_index do |a, index|
             -a the accept value for the header  text/plain by default
             -p the port where to run the server
             -t the protocol to use http:// by default
-            -l where to save the log by default your-home-directory/log/icwot-{port}-msg.log
+            -l where to save the log. By default your-home-directory/log/icwot-{port}-msg.log
             host is where to register for the service.
             '
       exit 0
