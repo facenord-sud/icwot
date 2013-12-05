@@ -27,7 +27,7 @@ class Console
               -a the accept value for the header  text/plain by default
               -p the port where to run the server
               -t the protocol to use http:// by default
-              -l where to save the log. By default your-home-directory/log/icwot-{port}-msg.log
+              -o where to save the log. By default your-home-directory/log/icwot-{port}-msg.log
               host is where to register for the service.
               '
           exit 0
@@ -43,7 +43,7 @@ class Console
           unless (temp = ARGV.delete_at(index + 1)).nil?
             @protocol = temp
           end
-        when '-l'
+        when '-o'
           @log_path = ARGV.delete_at index + 1
         else
           @host += a

@@ -1,14 +1,10 @@
 #!/usr/bin/env ruby
 
 # A simple tool to run server on the client side
-
-require 'socket'
-require 'timeout'
-require 'rest-client'
-require 'json'
 require 'icwot'
 require 'icwot/client'
 require 'icwot/console'
+require 'rest-client'
 
 console = Console.new
 
@@ -24,8 +20,17 @@ end
 
 client = Client.new(port: console.port, content_type: console.produces)
 
-RestClient.post console.url, client.to_s, console.header
+begin
+  response = RestClient.post console.url, client.to_s, console.header
+rescue RestClient::Exception => e
+  puts "Error #{e.response.code} while contacting the host. The url is: '#{console.url}'"
+    exit 0
+rescue Errno::ECONNREFUSED => e
+  puts "Connection refused. The url is: '#{console.url}'"
+  exit 0
+end
 
-#TODO handle exception from RestClient
+#TODO handle the case when the response of the host is not correct
+puts "The response server: '#{response}' with code #{response.code}"
 
 Icwot.run(console.port, console.log_path)

@@ -1,3 +1,6 @@
+require 'socket'
+require 'json'
+
 class Client
   attr_accessor :uri, :content_type, :port
 

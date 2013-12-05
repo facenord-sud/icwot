@@ -1,5 +1,7 @@
 require "icwot/version"
 require 'icwot/server_client'
+require 'socket'
+require 'timeout'
 
 module Icwot
   def self.run(port, log_path)
