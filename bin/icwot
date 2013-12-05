@@ -40,9 +40,10 @@ class Client
     {uri: uri}
   end
 
+  # inspired by http://stackoverflow.com/questions/11897269/get-own-ip-address
   def get_ip
     ip=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
-    ip.ip_address if ip
+    ip ? ip.ip_address : '127.0.0.1'
   end
 
   def to_s
@@ -114,9 +115,8 @@ if is_port_open?('localhost', port)
 end
 
 client = Client.new
-client.uri = "http://#{client.get_ip.to_s}:#{port}/"
+client.uri = "http://#{client.get_ip}:#{port}/"
 client.content_type = produces
-
 
 response = RestClient.post protocol+host, client.to_s, accept: accept, content_type: produces
 
