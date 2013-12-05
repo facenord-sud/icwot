@@ -38,14 +38,12 @@ You can change it by specifying the ` -c your-content-type ` and ` -a your-accep
 
 *   json, the body will typically be like this : ` {"uri": "your-ip-address:port-where-sinatra-is running"} `
 *   xml, the body will typically be like this:
-   
     ` <client xmlns=\"http://jaxb.xwot.first.ch.unifr.diuf\">
         <uri>your-ip-address:port-where-sinatra-is running</uri>
     </client> `
-
 The xml is not as the best for the moment. We recommand to use json.
 
-There are several options for the commande line:
+### There are several options for the commande line:
 
     icwot <host>
                 -h print help
