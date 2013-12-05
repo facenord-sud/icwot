@@ -37,7 +37,13 @@ By default, the header of the ` POST ` method will have these values:
 You can change it by specifying the ` -c your-content-type ` and ` -a your-accept ` in the command line call. Actaually, it can encode the body in two different maners:
 
 *   json, the body will typically be like this : ` {"uri": "your-ip-address:port-where-sinatra-is running"} `
-*   xml, the body will typically be like this: ` <client xmlns=\"http://jaxb.xwot.first.ch.unifr.diuf\"><uri>your-ip-address:port-where-sinatra-is running</uri></client> ` The xml is not as the best for the moment. We recommand to use json.
+*   xml, the body will typically be like this:
+   
+    <client xmlns=\"http://jaxb.xwot.first.ch.unifr.diuf\">
+        <uri>your-ip-address:port-where-sinatra-is running</uri>
+    </client>
+
+The xml is not as the best for the moment. We recommand to use json.
 
 There are several options for the commande line:
 
