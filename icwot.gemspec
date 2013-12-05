@@ -5,7 +5,7 @@ require 'icwot/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "icwot"
-  spec.version       = Icwot::VERSION
+  spec.version       = Icwot::version
   spec.authors       = ["leo"]
   spec.email         = ["facenord.sud@gmail.com"]
   spec.description   = %q{icwot : RESTfull sinatra server providing inversion of control for logging messages from another web-server}

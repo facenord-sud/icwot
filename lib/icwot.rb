@@ -1,51 +1,31 @@
 require "icwot/version"
-require 'sinatra'
+require 'icwot/server_client'
 
-configure do
-  # We put the log level to info
-  set :logger_level, :info
-  # The logger is at the location log/msg.log
-  set :logger_log_file, lambda { create_or_open_log }
-end
+module Icwot
+  def self.run(port, log_path)
+    app = ServerClient.new
+    app.settings.port = port
+    app.settings.log_path = log_path
+    app.settings.run!
+  end
 
-# POST sur / avec le port 4567
-post '/' do
-  content_type 'text/plain'
-  # On enregistre dans un log spécial le body de la requête
-  msg.info request.body.read
-  logger.info "message saved to #{self.class.logger_log_file.path}"
-  # On retourne le code http 200 avec le texte 'ok'
-  'ok'
-end
-
-helpers do
-  # logger personalisé pour enregistrer les réponses du body
-  def msg
-    @logger ||= begin
-      @logger = ::Logger.new(self.class.logger_log_file)
-      @logger.level = ::Logger.const_get((self.class.logger_level || :warn).to_s.upcase)
-      @logger.datetime_format = "%Y-%m-%d %H:%M:%S"
-      @logger.formatter = proc do |serverity, time, progname, msg|
-        # le format et de la sorte:
-        #
-        # 2013-12-12 00:00:00
-        # "message body"
-
-        "#{time} :\n\"#{msg}\"\n\n"
+  # determine if a port is used or not
+  # from http://stackoverflow.com/questions/517219/ruby-see-if-a-port-is-open
+  def self.is_port_open?(ip, port)
+    begin
+      Timeout::timeout(1) do
+        begin
+          s = TCPSocket.new(ip, port)
+          s.close
+          return true
+        rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
+          return false
+        end
       end
-      @logger
+    rescue Timeout::Error
     end
+    return false
   end
 end
 
-private
 
-# Si le fichier log/msg.log n'existe pas, on le créé, sinon on l'ouvre
-def create_or_open_log
-  file_name = "icwot-#{ENV['sinatra_port']}-msg.log"
-  directory_path = "#{Dir.home}/log/"
-  Dir.mkdir(directory_path) unless File.exists?(directory_path)
-  file = ((log_path = ENV['sinatra_log']) == '' && !File.exist?(log_path) ? File.new(directory_path+file_name, 'a+') : File.new(ENV['sinatra_log']))
-  file.sync = true
-  file
-end
