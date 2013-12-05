@@ -23,6 +23,7 @@ In a terminal run:
     $ icwot <HOST>
 
 It will:
+
 1.  Register to the specified host by ` POST ` method and sending in the body informations how to contact the client.
  Currently, it is the uri needed for the host to send informations to the client.
 2.  Start a [sinatra](http://www.sinatrarb.com) server on default port 4567. Logging messages will be saved by default to :
