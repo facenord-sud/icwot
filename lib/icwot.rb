@@ -9,6 +9,7 @@ module Icwot
     app.settings.port = port
     app.settings.log_path = log_path
     app.settings.run!
+    app
   end
 
   # determine if a port is used or not

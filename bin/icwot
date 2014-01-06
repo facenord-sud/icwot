@@ -19,9 +19,10 @@ if Icwot.is_port_open?('localhost', console.port)
 end
 
 client = Client.new(port: console.port, content_type: console.produces)
+console.host_url = client.uri
 
 begin
-  response = RestClient.post console.url, client.to_s, console.header
+  response = RestClient.put console.url, client.to_s, console.header
 rescue RestClient::Exception => e
   puts "Error #{e.response.code} while contacting the host. The url is: '#{console.url}'"
     exit 0
@@ -32,5 +33,9 @@ end
 
 #TODO handle the case when the response of the host is not correct
 puts "The response server: '#{response}' with code #{response.code}"
-
-Icwot.run(console.port, console.log_path)
+begin
+  app = Icwot.run(console.port, console.log_path)
+rescue Interrupt => e
+  RestClient.delete console.url
+  app.quit!
+end

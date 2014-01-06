@@ -7,7 +7,7 @@ class Client
   def initialize(options = {})
     @content_type = options[:content_type] || 'application/json'
     @uri = options[:uri]
-    @port = options[:port]
+    @port = options[:port] || '4567'
   end
 
   def uri

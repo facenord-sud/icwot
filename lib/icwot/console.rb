@@ -1,6 +1,7 @@
 class Console
 
   attr_reader :produces, :accept, :port, :host, :protocol, :log_path, :errors
+  attr_accessor :host_url
 
   def initialize
     @produces = 'application/json'
@@ -53,7 +54,9 @@ class Console
   end
 
   def url
-    protocol+host
+    base_uri = protocol+host
+    base_uri += '/' unless base_uri[-1] == '/'
+    base_uri + host_url
   end
 
   def header
