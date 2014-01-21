@@ -33,9 +33,11 @@ end
 
 #TODO handle the case when the response of the host is not correct
 puts "The response server: '#{response}' with code #{response.code}"
-begin
-  app = Icwot.run(console.port, console.log_path)
-rescue Interrupt => e
+   thr = Thread.new { app = Icwot.run(console.port, console.log_path) }
+  thr.join
+Signal.trap 'EXIT' do
+  puts 'unregister from the server'
   RestClient.delete console.url
   app.quit!
+  puts 'quitting sinatra...'
 end
