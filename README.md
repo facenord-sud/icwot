@@ -1,5 +1,7 @@
 # Icwot
 
+[![Gem Version](https://badge.fury.io/rb/icwot.svg)](http://badge.fury.io/rb/icwot)
+
 RESTfull [sinatra](http://www.sinatrarb.com) server providing inversion of control for logging messages from another RESTfull application web-server
 
 ## Installation
