@@ -1,4 +1,4 @@
-# Icwot
+# Icwot [![GemVersion](https://badge.fury.io/rb/icwot.svg)](http://badge.fury.io/rb/icwot)
 
 > Application [Sinatra](http://www.sinatrarb.com)  permettant de logger les notifications envoyées par une application du Web de Objets utilisant l'inversion de contrôle.
 
