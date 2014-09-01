@@ -12,13 +12,13 @@ La motivation de réaliser un tel module était de démontrer avec quelle fac
 
 Dans le terminal exécuter la ligne suivante (nécessite Ruby et RubyGems d'installés):
 
-    $ gem install icwot
+    gem install icwot
 
 ## Utilisation
 Depuis un terminal lancer la commande
 
 ```
-$ icwot HOST
+icwot HOST
 ```
 
 où `HOST` est l’URL de la ressource d’un service Web de laquelle nous souhaitons recevoir des notifications. Cette commande va :
@@ -29,7 +29,7 @@ où `HOST` est l’URL de la ressource d’un service Web de laquelle nous souh
 Par défaut, le header de la requête POST pour s’enregistrer est `accept:application/json ;content_type:application/json`. Il est possible de le changer en ajoutant les arguments ``-c le-content-type et -a le-accept`. Où `le-content-type` et `le-accept` peuvent chacun être soit json soit xml. Donc suivant la valeur de l’argument `le-accept`, le corps de la requête sera encodé de deux manières :
 1. En JSON :
 ```json
-{url:xx.xxx.x.x:4567/}
+{"url":"xx.xxx.x.x:4567/""}
 ```
 2. En XML:
 ```xml
@@ -67,15 +67,15 @@ Pour s’enregistrer vers le serveur afin de recevoir des notifications, la gem 
 L’implémentation du serveur Sinatra est extrêmement simple, le code ci-dessous montre le code nécessaire pour que le serveur puisse recevoir une requête HTTP POST à l’URI / et l’enregistre dans un fichier de log.
 ￼
 ```ruby
-  post ’/’ do
+  post '/' do
     # response is returned in text/plain
-    content_type ’text/plain’
+    content_type 'text/plain'
     # save in a special log the body of the received request
     msg.info request.body.read
     # write in main log (the console) that we have received a new   notification
     logger.info "message saved to #{self.class.logger_log_file.path}"
     # return the HTTP code 200 with the text ok
-    ’ok’
+    'ok'
   end
 ```
 
