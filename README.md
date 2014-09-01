@@ -29,7 +29,7 @@ où `HOST` est l’URL de la ressource d’un service Web de laquelle nous souh
 Par défaut, le header de la requête POST pour s’enregistrer est `accept:application/json ;content_type:application/json`. Il est possible de le changer en ajoutant les arguments ``-c le-content-type et -a le-accept`. Où `le-content-type` et `le-accept` peuvent chacun être soit json soit xml. Donc suivant la valeur de l’argument `le-accept`, le corps de la requête sera encodé de deux manières :
 1. En JSON :
 ```json
-{"url":"xx.xxx.x.x:4567/""}
+{"url":"xx.xxx.x.x:4567/"}
 ```
 2. En XML:
 ```xml
